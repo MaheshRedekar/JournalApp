@@ -1,0 +1,32 @@
+[
+    {
+        "name": "ankit",
+        "rollNo": 1,
+        "marks": 97
+    },
+    {
+        "name": "Pratik",
+        "rollNo": 2,
+        "marks": 99
+    },
+    {
+        "name": "mahesh",
+        "rollNo": 3,
+        "marks": 96
+    },
+    {
+        "name": "thala",
+        "rollNo": 7,
+        "marks": 77
+    },
+    {
+        "name": "mahesh",
+        "rollNo": 8,
+        "marks": 78
+    },
+    {
+        "name": "pratik",
+        "rollNo": 9,
+        "marks": 98
+    }
+]
