@@ -1,7 +1,52 @@
 package com.journalApp.service;
 
+
+import com.journalApp.dao.JournalRepoInterface;
+import com.journalApp.entity.JournalEntry;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class JournalService implements JournalInterface {
 
+    @Autowired
+    private JournalRepoInterface journalRepoInterface;
+    @Override
+    public JournalEntry add(JournalEntry journalEntries) {
+        return journalRepoInterface.save(journalEntries);
+    }
+
+    @Override
+    public List<JournalEntry> getAllJournals() {
+        return journalRepoInterface.findAll();
+    }
+
+    @Override
+    public Optional<JournalEntry> findById(String myid) {
+        return journalRepoInterface.findById(myid);
+    }
+
+    @Override
+    public String removeById(String myId) {
+         journalRepoInterface.deleteById(myId);
+         return "given id is removed successfully";
+
+    }
+
+    @Override
+    public JournalEntry updateById(String myId, JournalEntry journalEntries) {
+        JournalEntry old=journalRepoInterface.findById(myId).orElse(null);
+        if (old!=null){
+            old.setTitle(journalEntries.getTitle()!=""? journalEntries.getTitle():old.getTitle());
+            old.setContent(journalEntries.getContent()!=""?journalEntries.getContent():journalEntries.getContent());
+        }
+      return   journalRepoInterface.save(old);
+
+
+    }
 
 }
 

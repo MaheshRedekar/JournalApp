@@ -1,26 +1,32 @@
 package com.journalApp.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class JournalEntries {
-
-    private long id;
-    private String name;
+@Entity
+@Table(name = "JournalTable")
+public class JournalEntry {
+    @Id
+    private String id;
     private String title;
+    private String content;
 
-    public long getId() {
+    public JournalEntry() {
+    }
+
+    public JournalEntry(String id, String title, String content) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getTitle() {
@@ -31,18 +37,20 @@ public class JournalEntries {
         this.title = title;
     }
 
-    public JournalEntries(long id, String name, String title) {
-        this.id = id;
-        this.name = name;
-        this.title = title;
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override
     public String toString() {
-        return "JournalEntries{" +
+        return "JournalEntry{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
                 '}';
     }
 }
